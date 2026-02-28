@@ -1,0 +1,22 @@
+.appContainer {
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.appContainer > header {
+    padding: 20px 0px;
+}
+
+.appContainer > header > a {
+    color: #e50914;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.footer {
+    margin-top: 40px;
+    color: #AAAAAA;
+}
