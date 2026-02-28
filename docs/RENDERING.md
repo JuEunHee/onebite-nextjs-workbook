@@ -91,3 +91,40 @@ export default function Page({
   movie
 }: InferGetStaticPropsType<typeof getStaticProps>) {}
 ```
+
+
+### ISR(Incremental Static Regeneration) - 증분 정적 재생성
+
+단순히 SSG 방식으로 생성된 페이지를 일정 주기로 재생성하는 기술임.
+
+- 60초가 지난 후 요청하면 일단 V1을 보내주고나서 V2를 생성함.
+-   그리고 다시 접속하면 V2를 보여줌
+- Index 페이지의 경우 `가장 추천하는 영화`라는 애가 있는데, 현재 getStaticProps로 된 페이지로 해두니 빌드타임에만 생성하는애라 바뀌지가 않고있음.
+    - ISR로 적용하는게 가장 적합한 친구!
+- 가장 강력한 사전 렌더링 방식이다.
+
+
+![일정 주기 재생성](./images/isr-1.png)
+![일정 주기 재생성](./images/isr-2.png)
+![일정 주기 재생성](./images/isr-3.png)
+
+
+```typescript
+export const getStaticProps = async () => {
+  return {
+    props: {
+      allBooks,
+      recommendedBooks,
+    },
+    revalidate: 3, // 3초마다 재생성
+  }
+}
+```
+
+
+**ON-DEMAND ISR (주문형 재검증)**
+    - 시간과 관계없이 사용자의 데이터가 업데이트 되는 페이지는 사전 렌더링이 어려움 (게시글 수정 / 삭제 필요)
+    - 불필요한 페이지 재생성 발생하게 된다는 추가적인 문제가 있음.
+    - SSR인 경우 사용자가 많은 경우 부하까지 걸릴 수 있다. 그러므로 요청을 기반으로 (게시글 요청이 트리거) 페이지를 업데이트 할 수 있음.
+
+![온디맨드 재생성](./images/ondemand-isr-1.png)
