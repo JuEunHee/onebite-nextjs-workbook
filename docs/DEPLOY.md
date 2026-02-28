@@ -22,4 +22,5 @@ Vercel Analytics, Speed Insight를 넣었고 아래 명령어로 Vercel의 글�
 
 ```shell
 $ vercel deploy
+$ vercel --prod
 ```
