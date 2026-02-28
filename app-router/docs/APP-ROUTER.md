@@ -14,9 +14,3 @@
 - 네비게이팅 (Navigating)
 - 프리페칭 (Pre-Fetching)
 - 사전 렌더링 (Pre-Rendering)
-
-
-### 페이지 라우팅 설정하기
-
-- `[id].tsx`: `Catch All Segment` 방식
-- `[[...id]].tsx`: `Optional Catch All Segment` 방식, 없는 페이지까지 대응해줌.
