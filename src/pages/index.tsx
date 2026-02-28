@@ -1,4 +1,4 @@
-import type { InferGetServerSidePropsType } from 'next';
+import type { InferGetServerSidePropsType, InferGetStaticPropsType } from 'next';
 import { useRouter } from 'next/router';
 import { ReactNode, useEffect } from 'react';
 import fetchMovies from '@/lib/apis/fetch-movies';
@@ -9,8 +9,22 @@ import styles from './index.module.css';
 import { getRandomMovies } from '@/lib/utils/movie';
 import { Movie } from '@/types/movie';
 
+
+/**
+ * 
+ * 1. 서버사이드 렌더링의 경우 매번 접속 요청시마다 새롭게 요청하기때문에,
+ * 항상 최신 버전으로 가져올 수 있다는 장점이 있으나
+ * 양이 많거나 무거운 연산인 경우 브라우저의 로딩을 기다리면서 불편함을 느낄 수 있다.
+ * 
+ * 2. 정적 사이트 생성 방식은
+ * SSR의 단점을 해결하는 사전 렌더링 방식으로, 
+ * 빌드 타임에 페이지를 미리 사전렌더링해둠.
+ */
+
+
 // 컴포넌트보다 먼저 실행되어서, 컴포넌트에 필요한 데이터를 불러오는 함수
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
+  console.log('인덱스 페이지')
   const data = await fetchMovies();
   const allMovies = "results" in data ? data.results : data;
   const recommendedMovies = await getRandomMovies(allMovies);
@@ -47,7 +61,7 @@ export const getServerSideProps = async () => {
   | **Step 4** | **['props']** | 객체 내부의 'props' 키에 해당하는 타입만 지목                        | `{ id: 1 }` |
   | **Step 5** | **Final Type** | **컴포넌트가 실제로 전달받을 Props 타입 완성**                      | **`{ id: number }`** |
  */
-export default function Home(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
   /**
    * Home또한 먼저 실행된 후 브라우저에서 한 번 더 실행됨.
    * 사전 렌더링으로 먼저 실행되고, 자바스크립트 번들로 전달 후 hydration될때 한 번 더 실행되므로 
