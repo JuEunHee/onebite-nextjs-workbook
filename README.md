@@ -26,4 +26,4 @@ vercel --prod
 * [x] /movie/[[...id]] (영화 상세 화면)
 * [x] 모바일 뷰에서 영화 목록 1열로 나옴
 * [x] SEO 컴포넌트 추가
-* [x] VERCEL에 배포
+* [x] VERCEL에 배포 및 analytics 추가

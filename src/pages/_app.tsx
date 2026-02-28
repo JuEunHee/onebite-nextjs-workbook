@@ -1,7 +1,8 @@
-import GlobalLayout from './components/layout/GlobalLayout'
 import { NextPage } from 'next';
-import type { ReactNode } from 'react';
 import type { AppProps } from "next/app";
+import type { ReactNode } from 'react';
+import { Analytics } from "@vercel/analytics/next"
+import GlobalLayout from './components/layout/GlobalLayout'
 import "@/styles/globals.css";
 
 type NextPageWithLayout = NextPage & {
@@ -17,8 +18,12 @@ export default function App({
   const getLayout = Component.getLayout ?? ((page: ReactNode) => page)
 
   return (
-    <GlobalLayout>
-      {getLayout(<Component {...pageProps} />)}
-    </GlobalLayout>
+    <>
+      <GlobalLayout>
+        {getLayout(<Component {...pageProps} />)}
+      </GlobalLayout>
+
+      <Analytics />
+    </>
   );
 }
