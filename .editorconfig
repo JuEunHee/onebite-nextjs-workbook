@@ -1,0 +1,27 @@
+# EditorConfig helps developers define and maintain consistent
+# coding styles between different editors and IDEs.
+# root = true는 상위 디렉토리에서 설정을 찾지 않도록 중단하는 지점입니다.
+root = true
+
+[*]
+# 인코딩 방식 (원형: charset)
+charset = utf-8
+# 들여쓰기 스타일 (원형: indent_style)
+indent_style = space
+# 들여쓰기 크기 (원형: indent_size)
+indent_size = 2
+# 줄바꿈 방식 (원형: end_of_line)
+# LF(Line Feed)는 유닉스/맥/윈도우 공용으로 권장되는 표준입니다.
+end_of_line = lf
+# 파일 끝에 빈 줄 추가 (원형: insert_final_newline)
+insert_final_newline = true
+# 줄 끝의 공백 제거 (원형: trim_trailing_whitespace)
+trim_trailing_whitespace = true
+
+[*.md]
+# 마크다운에서는 줄 끝 공백이 줄바꿈 의미를 가질 수 있어 예외 처리합니다.
+trim_trailing_whitespace = false
+
+[Makefile]
+# Makefile은 반드시 탭(Tab)을 사용해야 작동합니다.
+indent_style = tab
