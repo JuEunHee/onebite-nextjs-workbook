@@ -9,7 +9,7 @@ const getNames = (items: (string | { name: string })[]) => {
   return items.map((item) => {
     if (typeof item === 'string') return item; // 문자열이면 그대로 반환
     return item.name; // 객체면 name 추출
-  });
+  }).join(', ');
 };
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
