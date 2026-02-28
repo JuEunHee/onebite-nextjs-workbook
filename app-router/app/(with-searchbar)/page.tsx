@@ -1,5 +1,5 @@
 import ClientComponent from "../../components/client-component";
-import ServerComponent from "./server-component";
+import ServerComponent from "../../components/server-component";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -22,9 +22,7 @@ export default function Home() {
       인덱스 페이지
 
       {/* Home -> Client Component -> Server Component */}
-      <ClientComponent>
-        <ServerComponent />
-      </ClientComponent>
+      <ServerComponent />
     </div>
   );
 }

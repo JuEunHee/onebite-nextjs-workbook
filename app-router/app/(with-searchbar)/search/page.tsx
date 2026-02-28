@@ -9,8 +9,8 @@ export default async function Page({
 
   return (
     <div>
-      Search 페이지 {q}
-    
+      Search 페이지 @@ {q}
+
       <ClientComponent>
         <></>
       </ClientComponent>
