@@ -17,3 +17,9 @@ production 모드로 하고싶다면 아래와 같이 `--prod` 옵션을 주면 
 ```shell
 $ vercel --prod
 ```
+
+Vercel Analytics, Speed Insight를 넣었고 아래 명령어로 Vercel의 글로벌 CDN에 배포 가능
+
+```shell
+$ vercel deploy
+```
